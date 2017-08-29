@@ -23,25 +23,4 @@ and more skills in forming mental models about computational systems are
 required to navigate ordinary lives. 
 
 
-//
-
-We present applications of linear logic, dependent type theory, and
-automated reasoning in the construction of virtual agents and environments. 
-
-
-/////******
-
-Title:
-Duality in nonlinear narrative
-
-(Tamara and Sure Thing stuff)
-
-
-/////
-
-Title:
-Compositional semantics for generative media
-
-
-
 

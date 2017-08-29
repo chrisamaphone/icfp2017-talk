@@ -1,26 +1,12 @@
-
 Title:
-Talking to computers:
-Towards human-computer interactions that support compositional reasoning
-Towards reasonable human-computer interactions
-
+Compositional creativity: some principles for talking to computers
+ 
 Abstract:
+ 
+Generativity is an increasingly popular and useful concept, referring to a machine’s ability to respond to user input with new constructions not foreseen by the programmer. Yet increasingly, people treat computational systems as unknowable black-box systems, writing off the possibility of forming mental models that allow a collaborative relationship between human insight and fast computation. 
 
-Interactions between human users and the complex emergent behavior of
-algorithmic systems are an integral part of computing and an increasingly
-pervasive part of life. 
+I argue for the efficacy of transparent, compositional semantics for collaborating with virtual agents and deriving insights from system models. Having built systems based on automated reasoning for linear logic and epistemic modal logic, we can formalize notions of belief, intention, and action, in order to create virtual agents that behave in ways that humans can reason about based on intuitions about goal-driven behavior. For example, some of Grice’s maxims of conversation can be seen as derivable consequences of these principles. Ongoing work includes applying these formalisms to the tasks of navigating unknown rule systems in virtual environments, social skills training, and generative storytelling.
 
-Rather than treating algorithmic systems as proprietary black-boxes,
-unknowable to the user, I argue for generative systems that support
-transparent, calculable reasoning over their behavior. 
-
-Programming languages have traditionally been considered only the language
-spoken between programmer and machine, rather than between *user* and
-machine.
-
-But increasingly the distinctions between programmer and user are blurred,
-and more skills in forming mental models about computational systems are
-required to navigate ordinary lives. 
-
-
-
+ 
+Bio:
+Chris Martens is an Assistant Professor at North Carolina State University, where she directs the Principles of Expressive Machines (POEM) lab. She was a postdoctoral researcher with UC Santa Cruz’s Expressive Intelligence Studio after completing her Ph.D. with the Principles of Programming group at Carnegie Mellon in 2015. At CMU she worked on logical frameworks, dependent type theory, and representing narrative structure with linear logic. Her current research activities include applying automated reasoning and compositional semantics to the authorship of generative systems, games, and narrative, as well as designing accessible tools for system modeling and logical specification.

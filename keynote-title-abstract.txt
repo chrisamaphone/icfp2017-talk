@@ -1,0 +1,47 @@
+
+Title:
+Talking to computers:
+Towards human-computer interactions that support compositional reasoning
+Towards reasonable human-computer interactions
+
+Abstract:
+
+Interactions between human users and the complex emergent behavior of
+algorithmic systems are an integral part of computing and an increasingly
+pervasive part of life. 
+
+Rather than treating algorithmic systems as proprietary black-boxes,
+unknowable to the user, I argue for generative systems that support
+transparent, calculable reasoning over their behavior. 
+
+Programming languages have traditionally been considered only the language
+spoken between programmer and machine, rather than between *user* and
+machine.
+
+But increasingly the distinctions between programmer and user are blurred,
+and more skills in forming mental models about computational systems are
+required to navigate ordinary lives. 
+
+
+//
+
+We present applications of linear logic, dependent type theory, and
+automated reasoning in the construction of virtual agents and environments. 
+
+
+/////******
+
+Title:
+Duality in nonlinear narrative
+
+(Tamara and Sure Thing stuff)
+
+
+/////
+
+Title:
+Compositional semantics for generative media
+
+
+
+

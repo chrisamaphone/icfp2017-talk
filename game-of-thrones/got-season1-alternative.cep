@@ -1,0 +1,143 @@
+character : type.
+jon_arryn : character.
+eddard_stark : character.
+catelyn_stark : character.
+sansa_stark : character.
+cersei_lannister : character.
+tyrion_lannister : character.
+jaime_lannister : character.
+robert_baratheon : character.
+littlefinger : character.
+varys : character.
+joffrey_baratheon : character.
+ilin_payne : character.
+
+city : type.
+winterfell : city.
+kings_landing : city.
+
+role : type.
+hand : role.
+king_of_andals : role.
+prince : role.
+protector : role.
+warden_of_north : role.
+common : role.
+
+governance role : bwd.
+governance king_of_andals.
+governance protector.
+governance hand.
+
+supercedes role role : bwd.
+supercedes king_of_andals protector.
+supercedes king_of_andals hand.
+
+has_role character role : pred.
+offered_role character role : pred.
+dead character role : pred.
+married character character : pred.
+allies character character : pred.
+heir character character : pred.
+incarcerated character : pred.
+at character city : pred.
+reckless character : pred.
+wounded character : pred.
+believes_illegitimate character character : pred.
+believes_legitimate character character : pred.
+ordered_arrest character character : pred.
+need_filled role : pred.
+
+context init =
+{ dead jon_arryn hand,
+  has_role robert_baratheon king_of_andals,
+  heir robert_baratheon joffrey_baratheon,
+  has_role joffrey_baratheon prince,
+  allies robert_baratheon eddard_stark,
+  has_role eddard_stark warden_of_north,
+  reckless robert_baratheon,
+  at eddard_stark winterfell,
+  at joffrey_baratheon kings_landing,
+  at robert_baratheon kings_landing,
+  believes_legitimate eddard_stark joffrey_baratheon
+}.
+
+stage main = {
+
+  search_for_replacement
+    : dead Someone Role -o need_filled Role.
+
+  name_hand :
+      need_filled hand
+    * $has_role King king_of_andals
+    * $allies King NewHand
+  -o
+    offered_role NewHand hand.
+
+  accept_offer :
+      offered_role C Role
+    * governance Role
+    * has_role C SomeOtherRole
+    * at C Location
+  -o
+      has_role C Role
+    * at C kings_landing.
+
+  decline_offer :
+      offered_role C Role
+  -o
+      need_filled Role.
+
+  become_wounded :
+      reckless C -o wounded C.
+
+  name_protector :
+      wounded King * has_role King king_of_andals
+    * allies King Protector * at King _
+  -o
+      dead King king_of_andals * offered_role Protector protector.
+
+  inherit_throne :
+      dead King Role * heir King Heir
+  -o
+      offered_role Heir Role.
+
+  protector_becomes_king :
+      has_role Someone protector * need_filled king_of_andals
+  -o
+      has_role Someone king_of_andals.
+
+  find_illegitimacy_evidence :
+      $at C kings_landing *
+      $has_role joffrey_baratheon king_of_andals *
+      believes_legitimate C joffrey_baratheon
+  -o
+      believes_illegitimate C joffrey_baratheon.
+
+  order_arrest :
+      $has_role Accuser Role * governance Role
+      * believes_illegitimate Accuser Accused
+  -o
+      ordered_arrest Accuser Accused.
+
+  obey_arrest_order :
+      ordered_arrest P1 P2 * $has_role P1 R1 * has_role P2 R2
+      * supercedes R1 R2 * at P2 _
+  -o
+      incarcerated P2.
+
+  disobey_arrest_order :
+      ordered_arrest P1 P2 * $has_role P1 R1 * $has_role P2 R2
+      * supercedes R2 R1
+  -o
+      believes_illegitimate P2 P1.
+
+  order_execution :
+      incarcerated Prisoner * $has_role King king_of_andals
+  -o
+      dead Prisoner common.
+
+}
+% #interactive main.
+
+#trace _ main init.
